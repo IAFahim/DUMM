@@ -7,8 +7,7 @@ const router = new Router();
 
 router.get("/GET", (context) => {
     const queryParams = context.request.url.searchParams;
-    console.log(queryParams.get("param1"));
-    console.log(queryParams.get("param2"));
+
 })
 
 router.post("/POST", async (context) => {
