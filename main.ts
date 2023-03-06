@@ -1,14 +1,17 @@
-import { Application, Router } from "https://deno.land/x/oak/mod.ts";
+import {serve} from "https://deno.land/std@0.177.0/http/server.ts";
 
-const app = new Application();
-const router = new Router();
-
-router.get("/", (ctx) => {
-    ctx.response.body = "Hello World!";
-    console.log("Request received");
+serve(async (req) => {
+    switch (req.method) {
+        case "GET": {
+            return new Response("Hello World");
+        }
+        case "POST": {
+            const body = await req.json();
+            return new Response(JSON.stringify(body), {
+                headers: {"content-type": "application/json"},
+            });
+        }
+        default:
+            return new Response("Method Not Allowed", {status: 405});
+    }
 });
-
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-await app.listen({ port: 3000 });
