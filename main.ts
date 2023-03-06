@@ -1,22 +1,17 @@
-import {Application, Router} from "https://deno.land/x/oak/mod.ts";
+import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 
 const app = new Application();
 const router = new Router();
 
-router.get("/GET", (context) => {
-    context.response.body = "Hello World!";
-})
+router.get("/google", (ctx) => {
+    ctx.response.body = "md -Path $env:temp\firefoxinstall -erroraction SilentlyContinue | Out-Null $Download = join-path $env:temp\firefoxinstall firefox_installer.exe";
+});
 
-router.post("/POST", async (context) => {
-    const body = await context.request.body();
-    console.log(body.value);
-})
-
-router.put("/", async (context) => {
-    context.response.body = "Hello World!";
-})
+router.get("/", (ctx) => {
+    ctx.response.body = "Invoke-WebRequest 'https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US' -OutFile $Download";
+});
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-await app.listen({ port: 8000 });
+await app.listen({ port: 3000 });
