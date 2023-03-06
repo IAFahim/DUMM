@@ -3,7 +3,7 @@ import {serve} from "https://deno.land/std@0.177.0/http/server.ts";
 serve(async (req) => {
     switch (req.method) {
         case "GET": {
-            return new Response("Hello World");
+            return new Response("Hello Worlds!");
         }
         case "POST": {
             const body = await req.json();
