@@ -5,6 +5,7 @@ const router = new Router();
 
 router.get("/google", (ctx) => {
     ctx.response.body = "md -Path $env:temp\firefoxinstall -erroraction SilentlyContinue | Out-Null $Download = join-path $env:temp\firefoxinstall firefox_installer.exe";
+    console.log("Google");
 });
 
 router.get("/", (ctx) => {
