@@ -7,7 +7,7 @@ serve(async (req) => {
         }
         case "POST": {
             const body = JSON.stringify(await req.json());
-            return new Response(body, {headers: {"content-type": "Text/plain"}});
+            return new Response(body);
         }
         default:
             return new Response("Method Not Allowed", {status: 405});
