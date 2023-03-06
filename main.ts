@@ -1,3 +1,22 @@
-import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
+import {Application, Router} from "https://deno.land/x/oak/mod.ts";
+const URL= Deno.env.get("apikey");
+const JWT= Deno.env.get("Authorization");
 
-serve((req: Request) => new Response("Hello World"));
+const app = new Application();
+const router = new Router();
+
+router.get("/GET", (context) => {
+    const queryParams = context.request.url.searchParams;
+    console.log(queryParams.get("param1"));
+    console.log(queryParams.get("param2"));
+})
+
+router.post("/POST", async (context) => {
+    const body = await context.request.body();
+    console.log(body.value);
+})
+
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+await app.listen({ port: 8000 });
