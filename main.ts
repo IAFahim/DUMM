@@ -6,7 +6,7 @@ serve(async (req) => {
             return new Response("Hello Worlds!");
         }
         case "POST": {
-            const body = await req.body();
+            const body = await JSON.parse(req.text());
             return new Response(body);
         }
         default:
