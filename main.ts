@@ -1,15 +1,18 @@
 import {Application, Router} from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
-const url: string|undefined= Deno.env.get("URL");
+const url: string | undefined = Deno.env.get("URL"); //https://gslzopouyhfpxttlxnvg.supabase.co/rest/v1/UMMD
+const access_token: string | undefined = Deno.env.get("AccessToken");
+const Api_key: string | undefined = Deno.env.get("Apikey");
+
 
 const router = new Router();
 router
-    .get("/", (context) => {
-        context.response.body = url;
-        context.response.status = 200;
+    .get("/", async (context) => {
+        const body = await context.request.body().value;
+        console.log(body);
     }).post("/", async (context) => {
     const body = await context.request.body().value;
-
+    console.log(body);
     context.response.status = 200;
 })
 
