@@ -9,11 +9,11 @@ const router = new Router();
 router.get("/", async (context) => {
     if (context.request.method == "GET") {
         const body = await context.request.body().value;
-        console.log(body + "get");
+        console.log(body.text + "get");
         context.response.status = 200;
     } else {
         const body = await context.request.body().value;
-        console.log(body + "post");
+        console.log(body.text + "post");
         context.response.status = 200;
     }
 });
