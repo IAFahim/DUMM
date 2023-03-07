@@ -24,6 +24,11 @@ router.post("/", async (context) => {
     // context.response.body = json;
 });
 
+router.get("/", async (context) => {
+    context.response.body = "Hello World!";
+    context.response.status = 200;
+});
+
 
 const app = new Application();
 app.use(router.routes());
