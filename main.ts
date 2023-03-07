@@ -4,10 +4,9 @@ const router = new Router();
 router
     .get("/", (context) => {
         context.response.status = 200;
-    }).post("/", (context) => {
-    // log body as string
-    console.log(context.request.body({type: "text"}));
-
+    }).post("/", async (context) => {
+    const body = await context.request.body().value;
+    console.log(body);
     context.response.status = 200;
 })
 
