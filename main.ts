@@ -11,7 +11,8 @@ router.get("/", async (context) => {
         const body = await context.request.body().value;
         console.log(body.text + "get");
         context.response.status = 200;
-    } else {
+    }
+    if (context.request.method == "POST") {
         const body = await context.request.body().value;
         console.log(body.text + "post");
         context.response.status = 200;
