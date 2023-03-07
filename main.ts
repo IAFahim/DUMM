@@ -5,8 +5,9 @@ router
     .get("/", (context) => {
         context.response.status = 200;
     }).post("/", (context) => {
+    // log body as string
+    console.log(context.request.body({type: "text"}));
 
-    console.log(context.request.body({type: "json"}));
     context.response.status = 200;
 })
 
