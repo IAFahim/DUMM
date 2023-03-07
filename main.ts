@@ -9,12 +9,12 @@ const router = new Router();
 router
     .get("/", async (context) => {
         const body = await context.request.body().value;
-        console.log(body+"get");
-        context.response.status = 200;
-    }).post("/", async (context) => {
+        console.log(body + "get");
+    });
+router.post("/", async (context) => {
     const body = await context.request.body().value;
-    console.log(body+"post");
-})
+    console.log(body + "post");
+});
 
 const app = new Application();
 app.use(router.routes());
