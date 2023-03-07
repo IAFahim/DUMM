@@ -6,16 +6,21 @@ const Api_key: string | undefined = Deno.env.get("Apikey");
 
 
 const router = new Router();
-router.get("/", async (context) => {
-    const body:string = await context.request.body().value;
-    console.log(body + "get");
-    context.response.status = 200;
-});
 
 router.post("/", async (context) => {
-    const body = await context.request.body().value;
-    console.log(body + "post");
-    context.response.status = 200;
+    const body = await context.request.body();
+    const data = body.value;
+    const response = await fetch(`${url}`, {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        "apikey": `${Api_key}`,
+        "Authorization": `Bearer ${access_token}`,
+        },
+        body: JSON.stringify(data),
+    });
+    const json = await response.json();
+    context.response.body = json;
 });
 
 const app = new Application();
