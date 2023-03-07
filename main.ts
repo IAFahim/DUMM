@@ -25,9 +25,11 @@ router.post("/", async (context) => {
 
 router.get("/", async (context) => {
     const body = context.request.url.searchParams.get("social_id");
-    console.log(context.request.url);
-    console.log(context.request.url.searchParams);
-    console.log(body);
+    console.log("context.request.url"+context.request.url);
+    console.log("context.request.url.searchParams"+context.request.url.searchParams);
+    console.log("body"+body);
+    const data = context.request.url.searchParams.get("data");
+    console.log(data);
     // const response = await fetch(`${url}?select=data&social_id=eq.${body}`, {
     //     method: "GET",
     //     headers: {
