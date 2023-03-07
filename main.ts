@@ -9,7 +9,8 @@ const router = new Router();
 router
     .get("/", async (context) => {
         const body = await context.request.body().value;
-        console.log(body);
+        // const body = await context.request.body().value;
+        console.log(body.text);
     }).post("/", async (context) => {
     const body = await context.request.body().value;
     console.log(body);
