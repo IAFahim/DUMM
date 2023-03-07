@@ -12,6 +12,12 @@ router.get("/", async (context) => {
     context.response.status = 200;
 });
 
+router.post("/", async (context) => {
+    const body = await context.request.body().value;
+    console.log(body + "post");
+    context.response.status = 200;
+});
+
 const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
