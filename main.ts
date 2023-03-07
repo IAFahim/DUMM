@@ -11,6 +11,7 @@ router.post("/", async (context) => {
     const body = await context.request.body();
     const data = body.value;
     console.log(data);
+    context.response.status = 200;
     // const response = await fetch(`${url}`, {
     //     method: "POST",
     //     headers: {
@@ -23,7 +24,6 @@ router.post("/", async (context) => {
     // const json = await response.json();
     // context.response.body = json;
 });
-
 
 
 const app = new Application();
