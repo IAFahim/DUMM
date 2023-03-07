@@ -1,12 +1,15 @@
 import {Application, Router} from "https://deno.land/x/oak@v11.1.0/mod.ts";
 
+const url: string|undefined= Deno.env.get("URL");
+
 const router = new Router();
 router
     .get("/", (context) => {
+        context.response.body = url;
         context.response.status = 200;
     }).post("/", async (context) => {
     const body = await context.request.body().value;
-    console.log(body);
+
     context.response.status = 200;
 })
 
