@@ -17,10 +17,9 @@ router.post("/", async (context) => {
             "apikey": `${Api_key}`,
             "Authorization": `Bearer ${access_token}`,
         },
-        body: body,
+        body: JSON.stringify(body),
     });
     console.log(response.status);
-    const json = await response.json();
     context.response.status = 200;
 });
 
