@@ -11,6 +11,7 @@ router
         const body = await context.request.body().value;
         // const body = await context.request.body().value;
         console.log(body.text);
+        context.response.status = 200;
     }).post("/", async (context) => {
     const body = await context.request.body().value;
     console.log(body);
