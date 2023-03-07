@@ -1,25 +1,23 @@
-import {Application, Router} from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import {serve} from "https://deno.land/std@0.178.0/http/server.ts";
 
 const url: string | undefined = Deno.env.get("URL"); //https://gslzopouyhfpxttlxnvg.supabase.co/rest/v1/UMMD
 const access_token: string | undefined = Deno.env.get("AccessToken");
 const Api_key: string | undefined = Deno.env.get("Apikey");
 
 
-const router = new Router();
-router.get("/", async (context) => {
-    const body = await context.request.body().value;
-    console.log(body + "get");
-    context.response.status = 200;
-});
 
-router.post("/", async (context) => {
-    const body = await context.request.body().value;
-    console.log(body + "post");
-    context.response.status = 200;
-});
+const server = serve({ port: 8000 });
 
-const app = new Application();
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-await app.listen({port: 80});
+for await (const req of server) {
+    if (req.method === "GET") {
+        const body = await req.body();
+        const value = new TextDecoder().decode(body);
+        console.log(value + "get");
+        req.respond({ status: 200 });
+    } else {
+        const body = await req.body();
+        const value = new TextDecoder().decode(body);
+        console.log(value + "post");
+        req.respond({ status: 200 });
+    }
+}
