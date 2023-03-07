@@ -7,7 +7,7 @@ const Api_key: string | undefined = Deno.env.get("Apikey");
 
 const router = new Router();
 
-router.get("/", async (context) => {
+router.post("/", async (context) => {
     const body = await context.request.body();
     const data = body.value;
     console.log(data);
@@ -23,6 +23,8 @@ router.get("/", async (context) => {
     // const json = await response.json();
     // context.response.body = json;
 });
+
+
 
 const app = new Application();
 app.use(router.routes());
