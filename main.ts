@@ -10,17 +10,18 @@ const router = new Router();
 router.post("/", async (context) => {
     const body = await context.request.body();
     const data = body.value;
-    const response = await fetch(`${url}`, {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        "apikey": `${Api_key}`,
-        "Authorization": `Bearer ${access_token}`,
-        },
-        body: JSON.stringify(data),
-    });
-    const json = await response.json();
-    context.response.body = json;
+    console.log(data);
+    // const response = await fetch(`${url}`, {
+    //     method: "POST",
+    //     headers: {
+    //     "Content-Type": "application/json",
+    //     "apikey": `${Api_key}`,
+    //     "Authorization": `Bearer ${access_token}`,
+    //     },
+    //     body: JSON.stringify(data),
+    // });
+    // const json = await response.json();
+    // context.response.body = json;
 });
 
 const app = new Application();
