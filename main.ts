@@ -9,8 +9,8 @@ const router = new Router();
 
 router.post("/", async (context) => {
     const body = await context.request.body();
-    const data = body.value;
-    console.log(data);
+    const value = await body.value;
+    console.log(value);
     context.response.status = 200;
     // const response = await fetch(`${url}`, {
     //     method: "POST",
