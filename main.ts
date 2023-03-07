@@ -8,9 +8,8 @@ const Api_key: string | undefined = Deno.env.get("Apikey");
 const router = new Router();
 
 router.post("/", async (context) => {
-    const body = await context.request.body();
-    const value = await body.value;
-    console.log(value);
+    const body = await context.request.body().value;
+    console.log(body);
     context.response.status = 200;
     // const response = await fetch(`${url}`, {
     //     method: "POST",
