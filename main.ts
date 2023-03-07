@@ -25,7 +25,6 @@ router.post("/", async (context) => {
 
 router.get("/", async (context) => {
     const body = await context.request.body().value;
-    console.log(body["social_id"]);
     console.log(body);
     // const response = await fetch(`${url}?select=data&social_id=eq.${body}`, {
     //     method: "GET",
