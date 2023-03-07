@@ -19,6 +19,7 @@ router.post("/", async (context) => {
         },
         body: body,
     });
+    console.log(response.status);
     const json = await response.json();
     context.response.status = 200;
 });
