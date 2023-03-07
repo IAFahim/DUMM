@@ -26,6 +26,7 @@ router.post("/", async (context) => {
 
 router.get("/", async (context) => {
     context.response.body = "Hello World!";
+    console.log("From get");
     context.response.status = 200;
 });
 
