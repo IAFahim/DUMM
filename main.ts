@@ -24,9 +24,18 @@ router.post("/", async (context) => {
 });
 
 router.get("/", async (context) => {
-    context.response.body = "Hello World!";
-    console.log("From get");
-    context.response.status = 200;
+    const body = await context.request.body().value;
+    console.log(body);
+    // const response = await fetch(`${url}?select=data&social_id=eq.${body}`, {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         "apikey": `${Api_key}`,
+    //         "Authorization": `Bearer ${access_token}`,
+    //     },
+    //     });
+
+
 });
 
 
